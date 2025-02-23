@@ -74,7 +74,7 @@ class LoginScreen extends ConsumerWidget {
                                       .isValidEmail(emailController.text)) {
                                 String? token =
                                     await ref.read(authProvider.notifier).login(
-                                          emailController.text,
+                                          emailController.text.trim(),
                                           passwordController.text,
                                         );
                                 if (token != null && context.mounted) {
@@ -93,13 +93,14 @@ class LoginScreen extends ConsumerWidget {
                                     context, "Error", "Please enter password");
                               } else if (!ref
                                   .read(authProvider.notifier)
-                                  .isValidEmail(emailController.text)) {
+                                  .isValidEmail(emailController.text.trim())) {
                                 CustomSnackbar().errorSnackbar(context, "Error",
                                     "Please enter valid email");
                               }
                             },
                       child: isLoading
-                          ? const CircularProgressIndicator(color: Colors.white) // Prevents empty screen
+                          ? const CircularProgressIndicator(
+                              color: Colors.white) // Prevents empty screen
                           : const Text("Login"),
                     ),
                   ],
@@ -111,7 +112,7 @@ class LoginScreen extends ConsumerWidget {
                     ElevatedButton(
                       onPressed: () async {
                         await ref.read(authProvider.notifier).login(
-                              emailController.text,
+                              emailController.text.trim(),
                               passwordController.text,
                             );
                       },
@@ -123,7 +124,8 @@ class LoginScreen extends ConsumerWidget {
               if (isLoading) // Ensure loading doesn't fully block UI
                 Positioned.fill(
                   child: Container(
-                    color: Colors.black.withOpacity(0.5), // Semi-transparent overlay
+                    color: Colors.black.withOpacity(0.5),
+                    // Semi-transparent overlay
                     child: const Center(
                       child: CircularProgressIndicator(color: Colors.white),
                     ),

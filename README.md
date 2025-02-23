@@ -17,3 +17,8 @@ Run the main.dart file.
 - State management : Riverpod
 - Light and dark theme
 
+
+
+
+https://github.com/user-attachments/assets/b5be30b5-f0ca-4a14-b1a8-f2f8bb119a84
+
